@@ -1469,3 +1469,68 @@ input.has-error, textarea.has-error {
 .form-group select option {
     padding: 0.5rem;
 }
+
+/* Showcase Grid Styles */
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.showcase-item {
+    text-align: center;
+}
+
+.showcase-item img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
+
+.showcase-overlay {
+    margin-top: 1rem;
+}
+
+/* Mobile Horizontal Scroll for Showcase */
+@media (max-width: 768px) {
+    .showcase-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+        padding-bottom: 2rem; /* Space for scroll */
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: -2rem; /* Pull outside container padding */
+        margin-right: -2rem;
+        /* Hide scrollbar for cleaner look */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .showcase-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Add spacer for first and last item to align with content */
+    .showcase-grid::before,
+    .showcase-grid::after {
+        content: '';
+        flex: 0 0 0.5rem; /* Small spacer */
+    }
+    
+    .showcase-item {
+        flex: 0 0 70%; /* Show most of the card, hint next one */
+        max-width: 280px;
+        scroll-snap-align: center;
+    }
+    
+    .showcase-item img {
+        max-width: 100%;
+    }
+}
